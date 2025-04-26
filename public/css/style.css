@@ -1,0 +1,141 @@
+/*─────────────────────────
+  0. RESET & VARIABLES
+─────────────────────────*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Colores & tipografía */
+  --clr-primary: #004c97;
+  --clr-secondary: #00a99d;
+  --clr-dark: #212529;
+  --clr-light: #f8f9fa;
+
+  /* Font-sizes */
+  --fs-base: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 2.5rem;
+
+  --radius: .5rem;
+
+  /* Altura de la navbar (móvil por defecto) */
+  --nav-h: 56px;
+}
+
+@media (min-width: 992px) {     /* navbar más alta en desktop */
+  :root { --nav-h: 64px; }
+}
+
+/*─────────────────────────
+  1. BODY & TYPOGRAPHY
+─────────────────────────*/
+body {
+  font-family: system-ui, sans-serif;
+  color: var(--clr-dark);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4 { font-weight: 700; }
+h1 { font-size: var(--fs-xl); }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.25rem; }
+
+/*─────────────────────────
+  2. NAVBAR
+─────────────────────────*/
+.c-navbar {
+  backdrop-filter: blur(6px);
+  background: rgba(33,37,41,.8);
+  transition: background .4s ease;
+}
+.c-navbar .navbar-brand { color: var(--clr-secondary); }
+.c-navbar .nav-link { color: var(--clr-light); }
+.c-navbar .nav-link:hover,
+.c-navbar .nav-link:focus { color: var(--clr-secondary); }
+
+/*─────────────────────────
+  3. FLEX & GRID HELPERS
+─────────────────────────*/
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-2,
+.grid-3 { display: grid; gap: 1.5rem; }
+
+@media (min-width: 768px) { .grid-2 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 992px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+
+/*─────────────────────────
+  4. CARDS, TIMELINE & MISC
+─────────────────────────*/
+.card-hover { transition: transform .3s, box-shadow .3s; }
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 1rem 2rem -0.5rem rgba(0,0,0,.15);
+}
+
+.timeline {
+  list-style: none;
+  position: relative;
+  padding-left: 1.5rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: .25rem; top: 0;
+  width: .25rem; height: 100%;
+  background: var(--clr-primary);
+}
+.timeline li {
+  margin-bottom: 2rem;
+  position: relative;
+}
+.timeline li::before {
+  content: '';
+  position: absolute;
+  left: -.375rem; top: .25rem;
+  width: .75rem; height: .75rem; border-radius: 50%;
+  background: var(--clr-secondary);
+}
+
+/*─────────────────────────
+  5. VIDEO RESPONSIVO
+─────────────────────────*/
+.resp-video{
+  position:relative !important;
+  aspect-ratio:16/9 !important;
+  width:100% !important;
+  overflow:hidden !important;
+  border-radius:var(--radius) !important;
+  box-shadow:0 .75rem 1.5rem -.5rem rgba(0,0,0,.25) !important;
+}
+
+@supports not (aspect-ratio:16/9){
+  .resp-video{padding-bottom:56.25% !important; height:0 !important;}
+}
+
+.resp-video iframe,
+.resp-video video{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  border:0 !important;
+  border-radius:inherit !important;
+}
+
+/*─────────────────────────
+  6. FOOTER
+─────────────────────────*/
+.c-footer a:hover {
+  color: var(--clr-secondary) !important;
+}

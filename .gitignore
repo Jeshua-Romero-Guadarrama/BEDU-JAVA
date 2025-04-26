@@ -1,0 +1,24 @@
+# Dependencias
+/node_modules
+# CSS Compilado
+/public/assets/css/*.css
+/public/assets/css/*.css.map
+# OS
+.DS_Store
+# Environment
+.env
+.env.*
+!.env.example
+
+# Secrets
+*.pem
+*_credentials*
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Secrets
+*.pem
+*_credentials*
